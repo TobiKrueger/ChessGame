@@ -8,8 +8,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.Array;
 import com.chess.game.ChessGame;
 import com.chess.game.Materials.ChessBoard;
+import com.chess.game.chessPieces.Bishop;
 import com.chess.game.chessPieces.Chess_Piece;
+import com.chess.game.chessPieces.King;
+import com.chess.game.chessPieces.Knight;
 import com.chess.game.chessPieces.Pawn;
+import com.chess.game.chessPieces.Queen;
+import com.chess.game.chessPieces.Rook;
 
 /**
  * Created by Tobias on 20.09.2017.
@@ -55,7 +60,25 @@ public class GameScreen implements Screen {
         for (int i = 0; i < 8; i++) {
             _pieces.add(new Pawn(false, i * 100, 100, _board));
         }
+        //white pieces
+        _pieces.add(new Queen(true, 300, 0, _board));
+        _pieces.add(new King(true, 400, 0, _board));
+        _pieces.add(new Rook(true, 0, 0, _board));
+        _pieces.add(new Rook(true, 700, 0, _board));
+        _pieces.add(new Knight(true, 100, 0, _board));
+        _pieces.add(new Knight(true, 600, 0, _board));
+        _pieces.add(new Bishop(true, 200, 0, _board));
+        _pieces.add(new Bishop(true, 500, 0, _board));
 
+        //Black pieces
+        _pieces.add(new Queen(false, 300, 700, _board));
+        _pieces.add(new King(false, 400, 700, _board));
+        _pieces.add(new Rook(false, 0, 700, _board));
+        _pieces.add(new Rook(false, 700, 700, _board));
+        _pieces.add(new Knight(false, 100, 700, _board));
+        _pieces.add(new Knight(false, 600, 700, _board));
+        _pieces.add(new Bishop(false, 200, 700, _board));
+        _pieces.add(new Bishop(false, 500, 700, _board));
 
     }
 

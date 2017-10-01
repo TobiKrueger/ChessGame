@@ -26,7 +26,7 @@ public class ChessBoardTile {
 
     public void setOccupation(byte occupation){
         _occupation = occupation;
-        System.out.println(this.toString());
+        //System.out.println(this.toString());
     }
 
     @Override
