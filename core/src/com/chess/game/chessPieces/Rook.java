@@ -11,9 +11,9 @@ public class Rook extends Chess_Piece {
     public Rook(boolean white, int x, int y, ChessBoard board){
         super(white, x, y, board);
         if (white) {
-            _texture = new Texture("Pawn.png");
+            _texture = new Texture("Rook_white.png");
         } else {
-            _texture = new Texture("Pawn.png");
+            _texture = new Texture("Rook.png");
         }
     }
 }

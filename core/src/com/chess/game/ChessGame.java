@@ -21,21 +21,27 @@ public class ChessGame extends Game {
     //To display text to the User
     public BitmapFont _font;
 
+    private DragAndDropTester _test;
+
     @Override
     public void create() {
         _batch = new SpriteBatch();
         _font = new BitmapFont();
-        this.setScreen(new MainMenuScreen(this));
+        _test = new DragAndDropTester();
+        _test.create();
+        //this.setScreen(new MainMenuScreen(this));
     }
 
     @Override
     public void render() {
         super.render();
+        _test.render();
     }
 
     @Override
     public void dispose() {
         _batch.dispose();
         _font.dispose();
+        _test.dispose();
     }
 }

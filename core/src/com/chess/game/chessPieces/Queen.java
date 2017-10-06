@@ -9,12 +9,13 @@ import com.chess.game.Materials.ChessBoard;
 
 public class Queen extends Chess_Piece {
 
+
     public Queen(boolean white, int x, int y, ChessBoard board) {
         super(white, x, y, board);
         if (white) {
-            _texture = new Texture("Pawn.png");
+            _texture = new Texture("Queen_white.png");
         } else {
-            _texture = new Texture("Pawn.png");
+            _texture = new Texture("Queen.png");
         }
 
     }
