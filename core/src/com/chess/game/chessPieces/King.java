@@ -10,11 +10,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class King extends DragAndDropPiece {
 
     public King(boolean white, int x, int y) {
-        super(x, y);
+        super(white, x, y);
         if (white) {
             _sprite = new Sprite(new Texture("Pawn.png"));
         } else {
             _sprite = new Sprite(new Texture("Pawn.png"));
         }
+    }
+
+    @Override
+    boolean testForIlligalMoves(float x, float y) {
+        return true;
     }
 }

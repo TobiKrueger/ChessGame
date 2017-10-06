@@ -10,11 +10,16 @@ import com.chess.game.Materials.ChessBoard;
 
 public class Rook extends DragAndDropPiece {
     public Rook(boolean white, int x, int y){
-        super(x, y);
+        super(white, x, y);
         if (white) {
             _sprite = new Sprite(new Texture("Rook_white.png"));
         } else {
             _sprite = new Sprite(new Texture("Rook.png"));
         }
+    }
+
+    @Override
+    boolean testForIlligalMoves(float x, float y) {
+        return true;
     }
 }

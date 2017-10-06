@@ -35,6 +35,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.badlogic.gdx.utils.Array;
 import com.chess.game.Materials.ChessBoard;
+import com.chess.game.Materials.CollisionDetector;
 import com.chess.game.chessPieces.Bishop;
 import com.chess.game.chessPieces.DragAndDropPiece;
 import com.chess.game.chessPieces.King;
@@ -46,13 +47,13 @@ import com.chess.game.chessPieces.Rook;
 
 public class DragAndDropTester{
     private Stage stage;
+    private CollisionDetector _collisionDetecter;
 
     private Array<DragAndDropPiece> _chessPieces;
 
     public void create () {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-
 
         _chessPieces = new Array<DragAndDropPiece>();
 
@@ -82,6 +83,8 @@ public class DragAndDropTester{
         _chessPieces.add(new Knight(false, 600, 700));
         _chessPieces.add(new Bishop(false, 200, 700));
         _chessPieces.add(new Bishop(false, 500, 700));
+
+        _collisionDetecter = new CollisionDetector(_chessPieces);
 
         stage.addActor(new Image(new Texture("ChessBoard.png")));
         for (Actor actor : _chessPieces){

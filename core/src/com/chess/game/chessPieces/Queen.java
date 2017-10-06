@@ -12,12 +12,16 @@ public class Queen extends DragAndDropPiece {
 
 
     public Queen(boolean white, int x, int y) {
-        super(x, y);
+        super(white, x, y);
         if (white) {
             _sprite = new Sprite(new Texture("Queen_white.png"));
         } else {
             _sprite = new Sprite(new Texture("Queen.png"));
         }
+    }
 
+    @Override
+    boolean testForIlligalMoves(float x, float y) {
+        return true;
     }
 }

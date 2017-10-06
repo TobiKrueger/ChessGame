@@ -1,6 +1,7 @@
 package com.chess.game.chessPieces;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.chess.game.Materials.ChessBoard;
 
@@ -11,11 +12,16 @@ import com.chess.game.Materials.ChessBoard;
 public class Knight extends DragAndDropPiece {
 
     public Knight(boolean white, int x, int y){
-        super(x, y);
+        super(white, x, y);
         if (white) {
             _sprite = new Sprite(new Texture("Pawn.png"));
         } else {
             _sprite = new Sprite(new Texture("Pawn.png"));
         }
+    }
+
+    @Override
+    boolean testForIlligalMoves(float x, float y) {
+        return true;
     }
 }

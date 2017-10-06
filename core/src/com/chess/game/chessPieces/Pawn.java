@@ -13,13 +13,31 @@ import com.chess.game.Materials.ChessBoardTile;
  */
 
 public class Pawn extends DragAndDropPiece {
+    private boolean _neverMovedBefore;
 
     public Pawn(boolean white, int x, int y) {
-        super(x, y);
+        super(white, x, y);
         if (white) {
             _sprite = new Sprite(new Texture("Pawn_white.png"));
         } else {
             _sprite = new Sprite(new Texture("Pawn.png"));
         }
+        _neverMovedBefore = true;
+    }
+
+    @Override
+    boolean testForIlligalMoves(float x, float y) {
+
+        if ((_previousX - 50) < getX() && getX() < (_previousX + 50) && (_previousY - 50) < getY() && getY() < (_previousY + 250)){
+            if(_neverMovedBefore){
+                _neverMovedBefore = false;
+                return true;
+            }
+            System.out.println("Move is legal");
+            return getY() < (_previousY + 150);
+        }
+
+
+        return false;
     }
 }
