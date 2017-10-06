@@ -33,27 +33,60 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
+import com.badlogic.gdx.utils.Array;
 import com.chess.game.Materials.ChessBoard;
+import com.chess.game.chessPieces.Bishop;
 import com.chess.game.chessPieces.DragAndDropPiece;
+import com.chess.game.chessPieces.King;
+import com.chess.game.chessPieces.Knight;
+import com.chess.game.chessPieces.Pawn;
 import com.chess.game.chessPieces.Queen;
+import com.chess.game.chessPieces.Rook;
 
 
 public class DragAndDropTester{
-    Stage stage;
-    Actor myActor;
+    private Stage stage;
+
+    private Array<DragAndDropPiece> _chessPieces;
 
     public void create () {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
-        myActor = new DragAndDropPiece();
-        myActor.setVisible(true);
+
+        _chessPieces = new Array<DragAndDropPiece>();
+
+        //adding the Pawns
+        for (int i = 0; i < 8; i++) {
+            _chessPieces.add(new Pawn(true, i * 100, 100));
+        }
+        for (int i = 0; i < 8; i++) {
+            _chessPieces.add(new Pawn(false, i * 100, 600));
+        }
+        //white pieces
+        _chessPieces.add(new Queen(true, 300, 0));
+        _chessPieces.add(new King(true, 400, 0));
+        _chessPieces.add(new Rook(true, 0, 0));
+        _chessPieces.add(new Rook(true, 700, 0));
+        _chessPieces.add(new Knight(true, 100, 0));
+        _chessPieces.add(new Knight(true, 600, 0));
+        _chessPieces.add(new Bishop(true, 200, 0));
+        _chessPieces.add(new Bishop(true, 500, 0));
+
+        //BlackPieces
+        _chessPieces.add(new Queen(false, 300, 700));
+        _chessPieces.add(new King(false, 400, 700));
+        _chessPieces.add(new Rook(false, 0, 700));
+        _chessPieces.add(new Rook(false, 700, 700));
+        _chessPieces.add(new Knight(false, 100, 700));
+        _chessPieces.add(new Knight(false, 600, 700));
+        _chessPieces.add(new Bishop(false, 200, 700));
+        _chessPieces.add(new Bishop(false, 500, 700));
+
         stage.addActor(new Image(new Texture("ChessBoard.png")));
-        stage.addActor(myActor);
-
-
-
-
+        for (Actor actor : _chessPieces){
+            stage.addActor(actor);
+        }
     }
 
     public void render () {
@@ -67,6 +100,18 @@ public class DragAndDropTester{
     }
 
     public void dispose () {
+        for (Actor actor: stage.getActors()){
+            if(actor instanceof DragAndDropPiece){
+                ((DragAndDropPiece) actor).dispose();
+            }
+            else if(actor instanceof Image){
+                // how do i dispose this :O ?
+            }
+        }
+
         stage.dispose();
+
+
+
     }
 }

@@ -11,27 +11,31 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
  * Created by Tobias on 05.10.2017.
  */
 
-public class DragAndDropPiece extends Actor{
-    Sprite _sprite;
+public abstract class DragAndDropPiece extends Actor {
+    protected Sprite _sprite;
 
-    public DragAndDropPiece(){
+    public DragAndDropPiece(int x, int y) {
         _sprite = new Sprite(new Texture("Queen_white.png"));
         setWidth(_sprite.getWidth());
         setHeight(_sprite.getHeight());
-        setBounds(50, 50, getWidth(), getHeight());
-        setX(100);
-        setY(100);
-        addListener(new DragListener(){
+        setX(x);
+        setY(y);
+        addListener(new DragListener() {
             @Override
             public void drag(InputEvent event, float x, float y, int pointer) {
                 setX(x + getX() - (getWidth() / 2));
                 setY(y + getY() - (getHeight() / 2));
-                System.out.println("Drag: " + getX() + " : "+ getY());
             }
         });
     }
+
     @Override
-    public void draw(Batch batch, float parentAlpha){
+    public void draw(Batch batch, float parentAlpha) {
         batch.draw(_sprite, getX(), getY());
     }
+
+    public void dispose(){
+        _sprite.getTexture().dispose();
+    }
+
 }
